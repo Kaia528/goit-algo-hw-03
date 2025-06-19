@@ -1,23 +1,41 @@
 from datetime import datetime
 
+
 def get_days_from_today(date):
-    input_date = datetime.strptime(date, "%Y-%m-%d").date()
-    today = datetime.today().date()
-    delta = today - input_date
-    return delta.days
-print(get_days_from_today("2023-12-14"))
+    try:
+        input_date = datetime.strptime(date, "%Y-%m-%d").date()
+        current_date = datetime.today().date()
+        return (current_date - input_date).days
+    except (ValueError, TypeError):
+        return "Помилка: неправильний формат дати. Використовуйте 'YYYY-MM-DD'."
+
+
+print(get_days_from_today("2024-02-12"))
+print(get_days_from_today("12.02.2024"))
+print(get_days_from_today(20240212))
+print(get_days_from_today("2025-10-01"))
 
 
 
 import random
 
 def get_numbers_ticket(min_value, max_value, quantity):
-    if min_value <1 and max_value > 1000 or quantity < 1 and quantity > (max_value - min_value + 1):
+    if (
+        min_value < 1 or
+        max_value > 1000 or
+        min_value > max_value or
+        quantity < 1 or
+        quantity > (max_value - min_value + 1)
+    ):
         return []
 
     return sorted(random.sample(range(min_value, max_value + 1), quantity))
-lottery_numbers = get_numbers_ticket(1, 49, 6)
+
+
+lottery_numbers = get_numbers_ticket(1, 49, 5)
 print("Ваші лотерейні числа:", lottery_numbers)
+
+
 
 import re
 
