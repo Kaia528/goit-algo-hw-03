@@ -1,3 +1,5 @@
+
+""""
 from datetime import datetime
 
 
@@ -72,3 +74,5 @@ sanitized_numbers = [normalize_phone(num) for num in raw_numbers]
 
 print("Нормалізовані номери телефонів для SMS-розсилки:")
 print(sanitized_numbers)
+
+"""
